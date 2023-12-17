@@ -1,0 +1,14 @@
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+
+nav > div  {
+  padding-right: 20px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
