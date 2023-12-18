@@ -9,13 +9,18 @@
 - implemented routing for navigation
 - Responsive Frontend
 
+#### Deployed Link -  [Click Here to Check FrontEnd](https://tranquil-axolotl-97e3d4.netlify.app/)
+
 ##### HTML , CSS , Bootstrap , Javascript , React JS , React Router, Redux Toolkit , Redux Thunk , Chart.js
+
 
 ### DataVisualizer Rest APIS Backend
 
 ### Features
 - Database get request
 - custom user model
+
+#### Deployed Link -  [Click Here to Check BackEnd](https://datavalidation.pythonanywhere.com/)
 
  #### Django Rest Framework , Mysql , Swagger   
 
