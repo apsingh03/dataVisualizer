@@ -1,14 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { backendUrl } from "./Urls";
+
 
 // First, create the thunk
 export const SignUpAsync = createAsyncThunk("users/signup", async ({email, password}) => {
   try {
 
-    console.log(" email - " ,email )
-    console.log(" password - " , password )
+    // console.log(" email - " ,email )
+    // console.log(" password - " , password )
 
-    const response = await axios.post("http://localhost:8000/users/signup/" , {
+    const response = await axios.post( backendUrl.signup , {
         email: email,
         password: password
     } );

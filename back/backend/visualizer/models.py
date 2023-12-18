@@ -13,4 +13,3 @@ class Data(models.Model):
     D = models.IntegerField()
     E = models.IntegerField()
     F = models.IntegerField()
-

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataAsync } from "../redux/Slices/DataSlice";
 
@@ -10,10 +9,15 @@ import BarChart from "../components/BarChart";
 import LineChart from "../components/LineChart";
 
 import { DateRangePicker } from "react-date-range";
+import { Link } from "react-router-dom";
 
 Chart.register(...registerables);
 
 const HomePage = () => {
+
+  let getStartTimeFromUrl;
+  let getEndTimeFromUrl;
+
   const [startDatee, setstartDate] = useState(new Date());
   const [endDatee, setendDate] = useState(new Date());
 
@@ -22,6 +26,9 @@ const HomePage = () => {
   const [AgeGreater25, setAgeGreater25] = useState([]);
   const [AgeGreater15_25, setAgeGreater15_25] = useState([]);
 
+  // console.log("startDatee - " , getStartTimeFromUrl  )
+  // console.log("endDatee - " , getEndTimeFromUrl  )
+
   const dispatch = useDispatch();
 
   const dataFromRedux = useSelector((state) => state.data);
@@ -29,7 +36,17 @@ const HomePage = () => {
   // console.log("23 ",  dataFromRedux.data.data)
 
   useEffect(() => {
+
+    getStartTimeFromUrl = window.location.href.split("/")[4]
+    getEndTimeFromUrl = window.location.href.split("/")[5]
+
+    // setstartDate(getStartTimeFromUrl)
+
+    // setendDate(getEndTimeFromUrl)
+
+
     dispatch(fetchDataAsync());
+
   }, []);
 
   const handleSelect = (date) => {
@@ -103,6 +120,9 @@ const HomePage = () => {
                 ranges={[selectionRange]}
                 onChange={handleSelect}
               />
+
+              <Link to={`share/'${String(startDatee)}'/${String( endDatee) }/` } target="_blank" className="btn btn-primary btn-md" > Get Selected Date Range Url </Link>
+         
             </div>
           </div>
 

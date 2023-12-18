@@ -1,20 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { backendUrl } from "./Urls";
+
 
 // First, create the thunk
 export const SignInAsync = createAsyncThunk(
   "users/signup",
   async ({ email, password }) => {
     try {
-      //   console.log(" email - " ,email )
-      //   console.log(" password - " , password )
-
-      const response = await axios.post("http://localhost:8000/users/login/", {
+     
+      const response = await axios.post( backendUrl.login  , {
         email: email,
         password: password,
       });
-
-      // console.log("13 -" , response )
 
       return response.data;
     } catch (error) {
@@ -48,7 +46,7 @@ const signInSlice = createSlice({
       .addCase(SignInAsync.fulfilled, (state, action) => {
         state.isLoader = false;
         state.data = action.payload;
-        console.log(action.payload);
+        // console.log(action.payload);
 
         try {
 
@@ -64,6 +62,8 @@ const signInSlice = createSlice({
     
                 const convert = JSON.stringify(user);
                 sessionStorage.setItem("userLogged", convert);
+
+                window.location.replace("/")
 
             }
           
